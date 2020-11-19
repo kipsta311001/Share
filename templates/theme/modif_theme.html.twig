@@ -1,0 +1,39 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+
+  {% for message in app.flashes('notice') %}
+
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  
+<div class="text-center">
+  <strong>
+  
+ <div class="flash-notice">
+ {{ message }}
+ </div>
+  </strong>
+</div>
+
+  {% endfor %}
+
+</div>
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="text-center text-primary p-4">Modifier un thème</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 bg-dark p-4 m-0 text-primary text-center">
+            {{form(form)}}
+           
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
