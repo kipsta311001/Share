@@ -48,9 +48,14 @@ class ThemeController extends AbstractController
         $repoTheme = $em->getRepository(Theme::class);
         $themes = $repoTheme->findBy(array(),array('libelle'=>'ASC'));
 
-    
-
-            
+        if ($request->get('supp')!=null){
+            $theme = $repoTheme->find($request->get('supp'));
+            if($theme!=null){
+                $em->getManager()->remove($theme);
+                $em->getManager()->flush();
+            }
+            return $this->redirectToRoute('liste-theme');
+        }
         return $this->render('theme/liste-themes.html.twig', ['themes'=>$themes // Nous passons la liste des thèmes à la vue
  ]);
  }

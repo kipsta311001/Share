@@ -23,7 +23,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <h1 class="text-center text-primary p-4">Liste des utilisateurs</h1>
+        <h1 class="text-center text-primary p-4">Liste des fichiers</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-8 bg-dark p-4 m-0 text-primary">
@@ -31,35 +31,32 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">nom</th>
-                            <th scope="col">prenom</th>
-                            <th scope="col">date Inscription </th>
-                            <th scope="col">date de naissance</th>
+                            <th scope="col">nom du fichier</th>
+                            <th scope="col">extension</th>
+                            <th scope="col">Taille </th>
+                            <th scope="col">Propriétaire</th>
                             <th></th>
+                            <th></th>
+
 
                         
                         </tr>
                     </thead>
                     <tbody>
-                    {% for utilisateur in utilisateurs %}
+                    {% for fichier in fichiers %}
                     <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
-                        <td>{{utilisateur.nom |capitalize }}</td>
-                        <td>{{utilisateur.prenom|capitalize }}</td>
-                        <td>{{utilisateur.dateInscription |date('d/m/Y') }}</td>
-                        <td>{{utilisateur.dateNaissance |date('d/m/Y') }}</td>
+                        <td>{{fichier.vraiNom |capitalize }}</td>
+                        <td>{{fichier.extension|upper }}</td>
+                        <td>{{fichier.Taille }}</td>
+                        <td>{{fichier.utilisateur.prenom }} {{fichier.utilisateur.nom }} </td>
                         <td>
-                            <a href="{{path('modif_utilisateur',{'id':utilisateur.id})}}">
+                            <a href="{{path('telechargement-fichier',{'id':fichier.id})}}">
                                 <span class="material-icons" title="Modifier un utilisateur"> create </span>
                             </a>
                         </td>
                         <td>
-                            <a href="{{path('liste_utilisateur',{'supp':utilisateur.id})}}">
-                                <span class="material-icons" title="supprimer cette utilisateur"> delete </span>
-                            </a>
-                        </td>
-                         <td>
-                            <a href="{{path('user-profil',{'id':utilisateur.id})}}">
-                                <span class="material-icons" title="profil cette utilisateur"> account_circle </span>
+                            <a href="{{path('supp-fichier',{'id':fichier.id})}}">
+                                <span class="material-icons" title="supprimer ce fichier"> delete </span>
                             </a>
                         </td>
 

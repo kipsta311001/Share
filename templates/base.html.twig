@@ -32,6 +32,8 @@
       <li class="nav-item">
         <a class="nav-link" href="{{path('contact')}}"> Contact </a>
       </li>
+
+    
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Theme</a>
         <div class="dropdown-menu">
@@ -50,6 +52,31 @@
         
         </div>
       </li>
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Fichier</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{{path('ajout-fichier')}}">Ajout</a>
+                    <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{path('liste-fichier')}}">Liste</a>
+        
+        </div>
+      </li>
+
+  {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('inscrire')}}"> Inscription </a>
+        </li> 
+         <li class="nav-item">
+          <a class="nav-link" href="{{path('app_login')}}"> Se connecter </a>
+        </li>           
+   
+      {% else %}
+         <li class="nav-item">
+          <a class="nav-link" href="{{path('app_logout')}}"> Se déconnecter </a>
+        </li>   
+      {% endif %} 
+  
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">

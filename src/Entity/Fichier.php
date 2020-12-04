@@ -55,6 +55,11 @@ class Fichier
      */
     private $telechargements;
 
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $vraiNom;
+
     public function __construct()
     {
         $this->themes = new ArrayCollection();
@@ -66,12 +71,12 @@ class Fichier
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom()
     {
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom($nom)
     {
         $this->nom = $nom;
 
@@ -176,6 +181,18 @@ class Fichier
                 $telechargement->setFichier(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVraiNom(): ?string
+    {
+        return $this->vraiNom;
+    }
+
+    public function setVraiNom(string $vraiNom): self
+    {
+        $this->vraiNom = $vraiNom;
 
         return $this;
     }
